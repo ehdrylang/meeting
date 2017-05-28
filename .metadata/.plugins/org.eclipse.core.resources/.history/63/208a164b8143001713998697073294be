@@ -1,0 +1,5 @@
+package org.meeting.dao;
+import org.meeting.domain.UserVO;
+public interface UserDAO {
+	public void insertUser(UserVO vo);
+}

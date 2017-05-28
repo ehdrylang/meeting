@@ -1,0 +1,5 @@
+package org.meeting.dao;
+
+public class UserDAO {
+
+}

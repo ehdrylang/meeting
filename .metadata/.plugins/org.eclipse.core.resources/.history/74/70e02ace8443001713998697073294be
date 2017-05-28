@@ -1,0 +1,37 @@
+package org.meeting.dao;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.inject.Inject;
+
+import org.apache.ibatis.session.SqlSession;
+import org.meeting.domain.UserVO;
+import org.springframework.stereotype.Repository;
+@Repository
+public class UserDAOImpl implements UserDAO {
+	@Inject
+	private SqlSession sqlSession;
+	
+	private static final String namespace = "org.meeting.mapper.UserMapper";
+
+	@Override
+	public void insertUser(UserVO vo) {
+		sqlSession.insert(namespace+".insertUser",vo);
+	}
+
+	@Override
+	public UserVO readUser(String id) throws Exception {
+		return (UserVO)sqlSession.selectOne(namespace+".selectUser",id);
+	}
+
+	@Override
+	public UserVO readWithPW(String name, String id, String password) throws Exception {
+		Map<String,Object> paramMap = new HashMap<String,Object>();
+		paramMap.put("id", id);
+		paramMap.put("password", password);
+		paramMap.put("name", name);
+		return sqlSession.selectOne(namespace+"readWithPW",paramMap);
+	}
+	
+}
