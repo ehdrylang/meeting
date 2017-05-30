@@ -10,7 +10,7 @@
 <form role="form" method="post">
 	<div>
 		<label>ID</label>
-		<input type="text" name="id" placeholder="ID">
+		<input type="text" name="username" placeholder="ID">
 	</div>
 	<div>
 		<label>PASSWORD</label>
@@ -18,7 +18,11 @@
 	</div>
 	<div>
 		<label>NAME</label>
-		<input type="text" name="name" placeholder="Name">
+		<input type="text" name="displayname" placeholder="Name">
+	</div>
+	<div>
+		<label>KAKAOTALK_ID</label>
+		<input type="text" name="kakaoid" placeholder="KakaoTalk_id">
 	</div>
 	<div>
 		<button type="submit">회원가입</button>

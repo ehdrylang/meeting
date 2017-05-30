@@ -1,0 +1,6 @@
+
+5월 29, 2017 16:07:21.85 NEW SESSION
+5월 29, 2017 16:07:21.85 [6396:7276:0529/160721.859:ERROR:gcm_channel_status_request.cc(127)] GCM channel request failed.
+
+5월 30, 2017 20:17:21.99 NEW SESSION
+5월 30, 2017 20:17:21.99 [6552:4396:0530/201721.988:ERROR:render_process_host_impl.cc(2094)] Request for unknown Channel-associated interface: device::mojom::ScreenOrientationListener
