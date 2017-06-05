@@ -1,5 +1,0 @@
-package org.meeting.interceptor;
-
-public class SampleInterceptor {
-
-}

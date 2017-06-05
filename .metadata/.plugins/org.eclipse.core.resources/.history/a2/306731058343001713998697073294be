@@ -1,7 +1,0 @@
-package org.meeting.dao;
-import org.meeting.domain.UserVO;
-public interface UserDAO {
-	public void insertUser(UserVO vo);
-	public UserVO readUser(String idkey)throws Exception;
-	public UserVO readWithPW(String idkey,String name,String userid,String password)throws Exception;
-}

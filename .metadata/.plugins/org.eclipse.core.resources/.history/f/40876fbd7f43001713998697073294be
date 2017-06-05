@@ -1,8 +1,0 @@
-package org.meeting.dao;
-
-import org.springframework.stereotype.Repository;
-import org.meeting.domain.UserVO;
-@Repository
-public class UserDAOImpl implements UserVO {
-
-}

@@ -1,5 +1,0 @@
-package org.meeting.dao;
-
-public interface UserDAO {
-
-}

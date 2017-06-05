@@ -4,14 +4,16 @@ import javax.inject.Inject;
 
 import org.meeting.dao.UserDAO;
 import org.meeting.domain.UserVO;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.encoding.PasswordEncoder;
 import org.springframework.stereotype.Service;
 @Service
 public class UserServiceImpl implements UserService {
 	@Inject
 	private UserDAO dao;
-	
 	@Override
 	public void regist(UserVO vo) throws Exception {
+		
 		dao.create(vo);
 	}
 

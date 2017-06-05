@@ -1,35 +1,45 @@
 package org.meeting.web;
 
-import java.util.Locale;
+import java.util.Random;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
-import org.meeting.service.UserService;
+import org.meeting.service.MailService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class HomeController {
+	
 	@Inject
-	private UserService service;
+	private MailService mailService;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Model model)throws Exception {
 	
-		model.addAttribute("a",service.read("qjadud22"));
 		return "home";
 	}
-	@RequestMapping(value="/doA", method=RequestMethod.GET)
-	public String doA(Locale locale,Model model){
-		System.out.println("doA....................");
-		return "home";
-	}
-	@RequestMapping(value="/doB",method=RequestMethod.GET)
-	public String doB(Locale locale, Model model){
-		System.out.println("doB....................");
-		model.addAttribute("result","DOB RESULT");
-		return "home";
-	}
+    @ResponseBody
+	@RequestMapping(value = "/sendMail/auth", method = RequestMethod.POST)
+    public ResponseEntity<String> sendMailAuth(HttpSession session) {
+    	String email = "ehdrylang@naver.com";
+		int ran = new Random().nextInt(100000) + 10000; // 10000 ~ 99999
+        String joinCode = String.valueOf(ran);
+        String subject = "회원가입 인증 코드 발급 안내 입니다.";
+        StringBuilder sb = new StringBuilder();
+        sb.append("귀하의 인증 코드는 [" + joinCode + "] 입니다.");
+        if(mailService.send(subject, sb.toString(), "hansungmeeting@gmail.com", email, null))
+		return new ResponseEntity<>(joinCode,HttpStatus.CREATED);
+        else{
+        	return new ResponseEntity<>("FAIL",HttpStatus.BAD_REQUEST);
+        }
+    }
+    
+	
 }

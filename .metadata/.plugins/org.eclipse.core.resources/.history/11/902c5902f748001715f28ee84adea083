@@ -1,0 +1,87 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<html>
+<head>
+ <!-- 스프링 시큐리티 ajax csrf설정 403에러  -->
+<meta name="_csrf" content="${_csrf.token}"/>
+<!-- default header name is X-CSRF-TOKEN -->
+<meta name="_csrf_header" content="${_csrf.headerName}"/>
+<!-- 스프링 시큐리티 ajax csrf설정 403에러  -->
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<form action="/user/signup" role="form" method="post">
+	<div>
+		<label>ID(E-mail)</label>
+		<input type="text" name="username" placeholder="ID(E-mail)">
+	</div>
+	<div>
+		<label>PASSWORD</label>
+		<input type="password" name="password" placeholder="Password">
+	</div>
+	<div>
+		<label>NAME</label>
+		<input type="text" name="displayname" placeholder="Name">
+	</div>
+	<div>
+		<label>KAKAOTALK_ID</label>
+		<input type="text" name="kakaoid" placeholder="KakaoTalk_id">
+	</div>
+	<div>
+		<label>인증번호</label>
+		<input type="text" id="hansungAuth" ><input type="button" id="emailBtn" value="인증번호받기">
+	</div>
+	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+	<div>
+		<button type="submit" id="submit">회원가입</button>
+	</div>
+</form>
+
+<script src="http://code.jquery.com/jquery-1.10.2.js"></script> 
+<script type="text/javascript">
+
+$(document).ready(function(){
+	var emailAuth ="";
+	/* 스프링 시큐리티 ajax csrf설정 403에러 */
+	$(function () {
+		var token = $("meta[name='_csrf']").attr("content");
+		var header = $("meta[name='_csrf_header']").attr("content");
+		$(document).ajaxSend(function(e, xhr, options) {
+			xhr.setRequestHeader(header, token);
+		});
+	});
+	/* 스프링 시큐리티 ajax csrf설정 403에러 */
+	
+	
+    $("#emailBtn").click(function(){
+    	 $.ajax({ //image 파일 폴더에 생성
+             type : "post",
+             url : "/sendMail/auth",
+             dataType : "text",
+             processData : false,
+             contentType : false,
+             success : function(result) {
+            	 emailAuth=result;
+             }
+          });
+   });
+    $("#submit").click(function(event){
+    	$("form").submit();
+     	if($("#hansungAuth").val()===emailAuth){
+    		console.log("success");
+    		$("form").submit();
+    	}
+    	else{
+    		alert('이메일 인증 실패');
+    	} 
+    });
+    
+    
+});
+
+
+</script>
+</body>
+</html>
