@@ -30,12 +30,12 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public void update(UserVO vo) throws Exception {
+		vo.setPassword(passwordEncoder.encode(vo.getPassword()));
 		sqlSession.update(namespace+".update",vo);
 	}
 
 	@Override
 	public void delete(String id) throws Exception {
 		sqlSession.delete(namespace+".delete",id);
-	}
-	
+	}	
 }

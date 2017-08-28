@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="sf"%>
 <html>
 <head>
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
@@ -22,14 +23,18 @@
             <div class="panel panel-default">
                 <div class="panel-body">
                     <h5 class="text-center">- 회원가입 -</h5>
-                    <form action="/user/signup" role="form" method="post">
+                    
+                    <sf:form action="${pageContext.request.contextPath}/user/signup"
+						method="post" modelAttribute="userVO">
                     <div class="form-group">
                         <div class="input-group">
                             <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span>
                             </span>
-                            <input style="width:50%" type="text" id="username" class="form-control" name="username" placeholder="이메일 (ID)" required />
+                            <sf:input path="username" style="width:50%" id="username" class="form-control" placeholder="이메일 (ID)" />
+                            
                             <label style="width:50%" class="form-control">@hansung.ac.kr</label>
                         </div>
+                        <sf:errors path="username" cssStyle="color:#ff0000" />
                     </div>
                     <div>
                     	<label id="checkUid" class="checkLabel">필수 정보입니다.</label>
@@ -38,41 +43,45 @@
                     <div class="form-group">
                         <div class="input-group">
                             <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-                            <input type="text" class="form-control" name="displayname" placeholder="닉네임" required />
+                            <sf:input path="displayname" class="form-control" placeholder="닉네임" />
+                        	
                         </div>
+                        <sf:errors path="displayname" cssStyle="color:#ff0000" />
                     </div>
                     <div class="form-group">
                         <div class="input-group">
                             <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-                            <input type="password" class="form-control" name="password" placeholder="비밀번호" required />
+                            <sf:password path="password" class="form-control" placeholder="비밀번호"  />
+                        	
                         </div>
+                        <sf:errors path="password" cssStyle="color:#ff0000" />
                     </div>
                     <div class="form-group">
                         <div class="input-group">
                             <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-                            <input type="password" class="form-control" name="password2" placeholder="비밀번호 (확인)" required />
+                            <input type="password" name="password2" class="form-control" placeholder="비밀번호 (확인)" />
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="input-group">
                             <span class="input-group-addon"><span class="glyphicon glyphicon-star"></span></span>
-                            <input type="text" class="form-control" name="kakaoid" placeholder="카카오톡 아이디" required  />
+                            <sf:input path="kakaoid" class="form-control" placeholder="카카오톡 아이디"   />
+                            
                         </div>
+                        <sf:errors path="kakaoid" cssStyle="color:#ff0000" />
                     </div>
                     <div class="form-group">
                         <div class="input-group">
                             <span class="input-group-addon"><span class="glyphicon glyphicon-ok-circle"></span></span>
-                            <input style="width:50%" type="text" id="hansungAuth" class="form-control" placeholder="인증번호" required />
+                            <input path="hansungAuth" style="width:50%" id="hansungAuth" class="form-control" placeholder="인증번호" />
+                      
                             <input style="width:50%" type="button" id="emailBtn" class="btn btn-default" value="인증번호받기">
                         </div>
                     </div>
-                    <div>
-                    	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-                    </div>
-                    <div>
+                 	</sf:form>
+                 	 <div>
                     	<input style="width:100%" type="submit" id="submit" class="btn btn-default" value="가입하기">
                     </div>
-                 	</form>
 	            </div>
 	        </div>
 	    </div>
@@ -94,12 +103,12 @@ $(document).ready(function(){
 	/* 스프링 시큐리티 ajax csrf설정 403에러 */
 	
     $("#emailBtn").click(function(){
+    	var username = $('#username').val();   	
     	 $.ajax({ //image 파일 폴더에 생성
              type : "post",
              url : "/sendMail/auth",
              dataType : "text",
-             processData : false,
-             contentType : false,
+             data : {'username' : username},
              success : function(result) {
             	 emailAuth=result;
              }
@@ -139,13 +148,6 @@ $(document).ready(function(){
    	      }
    	   });
     }
-
-   	function buttonStop() {
-   	   $("#submit").attr("disabled",true);
-   	}
-   	function buttonStart(){
-   	   $("#submit").attr("disabled",false);
-   	}
 });
 </script>
 </body>

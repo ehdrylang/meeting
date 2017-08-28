@@ -1,0 +1,20 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta name="viewport" content="width=device-width">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+<body>
+
+<div class="row" style="background: #186fc4; margin: 0px;text-align: center;padding:5%;" >
+	<div>
+		<label style="color: white;">copyright (c) 2017, NewFace<br>서울특별시 성북구 삼선교로16길 116 공학관A동 104호</label><br>
+		<label style="color:white;"><span class="glyphicon glyphicon-envelope"></span> E-mail : hansungmeeting@gmail.com</label><br>
+		<label style="color:white;">오픈 카카오톡 : <a href="https://open.kakao.com/o/sfUamQz" target="_blank" style="color:white">https://open.kakao.com/o/sfUamQz</a> </label>
+	</div>
+</div>
+
+</body>
+</html>

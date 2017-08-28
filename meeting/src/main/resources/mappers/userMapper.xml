@@ -20,7 +20,7 @@
   	update
   	users
   	set
-  	displayname = #{displayname}, kakaoid = #{kakaoid}
+  	password=#{password}
   	where
   	username = #{username}
   </update>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="sf"%>
 <html>
 <head>
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
@@ -11,9 +12,23 @@
 <meta name="_csrf_header" content="${_csrf.headerName}"/>
 <!-- 스프링 시큐리티 ajax csrf설정 403에러  -->
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>뉴페이스 회원가입</title>
+<link rel="shortcut icon" type="image⁄x-icon" href="/resource/imageIcon/headerAndHome/favicon.ico" />
+<style>
+	body{
+		background-color: #f9f9f9;
+	}
+</style>
 </head>
 <body>
+<jsp:include page="/WEB-INF/views/header.jsp" flush="false" /> 
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 <div class="container">
     <div class="row">
     	<div class="col-sm-3">
@@ -21,15 +36,19 @@
         <div class="col-sm-6">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <h5 class="text-center">- 회원가입 -</h5>
-                    <form action="/user/signup" role="form" method="post">
+                    <h4 class="text-center">한성대 학생들과 신나는 미팅을 시작하세요!</h4>
+                    <br>
+                    <sf:form action="${pageContext.request.contextPath}/user/signup"
+						method="post" modelAttribute="userVO">
                     <div class="form-group">
                         <div class="input-group">
                             <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span>
                             </span>
-                            <input style="width:50%" type="text" id="username" class="form-control" name="username" placeholder="이메일 (ID)" required />
+                            <sf:input path="username" style="width:50%" id="username" class="form-control" placeholder="아이디 (이메일)" />
+                            
                             <label style="width:50%" class="form-control">@hansung.ac.kr</label>
                         </div>
+                        <sf:errors path="username" cssStyle="color:#ff0000" />
                     </div>
                     <div>
                     	<label id="checkUid" class="checkLabel">필수 정보입니다.</label>
@@ -38,48 +57,79 @@
                     <div class="form-group">
                         <div class="input-group">
                             <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-                            <input type="text" class="form-control" name="displayname" placeholder="닉네임" required />
+                            <sf:input path="displayname" class="form-control" placeholder="닉네임" />
+                        	
                         </div>
+                        <sf:errors path="displayname" cssStyle="color:#ff0000" />
                     </div>
                     <div class="form-group">
                         <div class="input-group">
                             <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-                            <input type="password" class="form-control" name="password" placeholder="비밀번호" required />
+                            <sf:password path="password" class="form-control" placeholder="비밀번호"  />
+                        	
                         </div>
+                        <sf:errors path="password" cssStyle="color:#ff0000" />
                     </div>
                     <div class="form-group">
                         <div class="input-group">
                             <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-                            <input type="password" class="form-control" name="password2" placeholder="비밀번호 (확인)" required />
+                            <input type="password" name="password2" class="form-control" placeholder="비밀번호 (확인)" />
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="input-group">
                             <span class="input-group-addon"><span class="glyphicon glyphicon-star"></span></span>
-                            <input type="text" class="form-control" name="kakaoid" placeholder="카카오톡 아이디" required  />
+                            <sf:input path="kakaoid" class="form-control" placeholder="카카오톡 아이디"   />
+                            
                         </div>
+                        <sf:errors path="kakaoid" cssStyle="color:#ff0000" />
                     </div>
                     <div class="form-group">
                         <div class="input-group">
                             <span class="input-group-addon"><span class="glyphicon glyphicon-ok-circle"></span></span>
-                            <input style="width:50%" type="text" id="hansungAuth" class="form-control" placeholder="인증번호" required />
+                            <input path="hansungAuth" style="width:50%" id="hansungAuth" class="form-control" placeholder="인증번호" />
+                      
                             <input style="width:50%" type="button" id="emailBtn" class="btn btn-default" value="인증번호받기">
                         </div>
                     </div>
-                    <div>
-                    	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-                    </div>
-                    <div>
+                 	</sf:form>
+                 	 <div>
                     	<input style="width:100%" type="submit" id="submit" class="btn btn-default" value="가입하기">
                     </div>
-                 	</form>
 	            </div>
 	        </div>
 	    </div>
 	    <div class="col-sm-3">
 	    </div>
 	</div>
+	<div class="row">
+		<div class="col-sm-3">
+		</div>
+		<div class="col-sm-6">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<h4 style="color:#186fc4">가입 안내</h4>
+					<div>
+						<p>1. 'ID' 에 <span style="color:red;">반드시 한성대학교 웹메일</span> 아이디를 적으세요. <a href="https://mail.hansung.ac.kr/" target="_blank">[한성대 웹메일 링크]</a><br>&nbsp;&nbsp;&nbsp;&nbsp;(한성대학교 웹메일 아이디가 NewFace의 아이디가 됩니다.)</p>
+						<p>2. 닉네임과 자신의 비밀번호, 카카오톡 아이디를 입력하세요. </p>
+						<p>3. '인증번호받기'를 누르면 <span style="color:red;">한성대학교 웹메일로 인증번호가 발송</span>됩니다.<br>&nbsp;&nbsp;&nbsp;&nbsp; 확인 후 인증번호를 입력해주세요.</p>
+						<p>4. '가입하기'를 누르시면 가입 완료!<br>&nbsp;&nbsp;&nbsp;&nbsp; 게시글을 작성하거나 타인이 작성한 게시글에 댓글을 작성해서 미팅을 시작하세요!</p>
+						<br>
+						<p>* 문의사항은 <a href="https://open.kakao.com/o/sfUamQz" target="_blank">[카카오톡 오픈채팅방]</a>으로 오세요! ('뉴페이스' 검색)</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-3">
+		</div>
+	</div>
 </div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<jsp:include page="/WEB-INF/views/footer.jsp" flush="false" />
 <script type="text/javascript">
 $(document).ready(function(){
 	var emailAuth = null;
@@ -94,12 +144,12 @@ $(document).ready(function(){
 	/* 스프링 시큐리티 ajax csrf설정 403에러 */
 	
     $("#emailBtn").click(function(){
+    	var username = $('#username').val();   	
     	 $.ajax({ //image 파일 폴더에 생성
              type : "post",
              url : "/sendMail/auth",
              dataType : "text",
-             processData : false,
-             contentType : false,
+             data : {'username' : username},
              success : function(result) {
             	 emailAuth=result;
              }
@@ -139,13 +189,6 @@ $(document).ready(function(){
    	      }
    	   });
     }
-
-   	function buttonStop() {
-   	   $("#submit").attr("disabled",true);
-   	}
-   	function buttonStart(){
-   	   $("#submit").attr("disabled",false);
-   	}
 });
 </script>
 </body>

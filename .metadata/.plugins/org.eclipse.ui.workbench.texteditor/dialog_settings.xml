@@ -2,17 +2,20 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="submit" key="selection"/>
+		<item value="color" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
-			<item value="submit"/>
-			<item value="회원가입"/>
-			<item value="servlet"/>
-			<item value="junit"/>
-			<item value="aop"/>
+			<item value="color"/>
+			<item value="heartClick"/>
+			<item value="heart"/>
+			<item value="bb2"/>
+			<item value="view"/>
+			<item value="userVO"/>
+			<item value="join"/>
+			<item value="type"/>
 		</list>
 		<list key="replacehistory">
 		</list>

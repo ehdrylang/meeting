@@ -9,3 +9,35 @@
 6월 01, 2017 13:22:52.69 [3328:4060:0601/132252.696:ERROR:gcm_channel_status_request.cc(127)] GCM channel request failed.
 6월 01, 2017 16:33:39.71 [3328:4060:0601/163339.718:ERROR:gcm_channel_status_request.cc(127)] GCM channel request failed.
 6월 01, 2017 19:44:48.70 [3328:4060:0601/194448.702:ERROR:gcm_channel_status_request.cc(127)] GCM channel request failed.
+
+6월 14, 2017 01:38:46.79 NEW SESSION
+6월 14, 2017 01:38:46.79 [7244:6884:0614/013846.797:ERROR:gcm_channel_status_request.cc(127)] GCM channel request failed.
+6월 14, 2017 01:39:11.67 [7244:6884:0614/013911.672:ERROR:gcm_channel_status_request.cc(127)] GCM channel request failed.
+6월 14, 2017 01:39:51.93 [7244:6884:0614/013951.936:ERROR:gcm_channel_status_request.cc(127)] GCM channel request failed.
+6월 14, 2017 01:41:21.41 [7244:6884:0614/014121.419:ERROR:gcm_channel_status_request.cc(127)] GCM channel request failed.
+6월 14, 2017 01:55:07.21 [3956:5280:0614/015507.217:ERROR:gcm_channel_status_request.cc(127)] GCM channel request failed.
+6월 14, 2017 01:55:33.89 [3956:5280:0614/015533.898:ERROR:gcm_channel_status_request.cc(127)] GCM channel request failed.
+6월 14, 2017 01:56:32.60 [3956:5280:0614/015632.608:ERROR:gcm_channel_status_request.cc(127)] GCM channel request failed.
+6월 14, 2017 01:58:17.03 [3956:5280:0614/015817.033:ERROR:gcm_channel_status_request.cc(127)] GCM channel request failed.
+6월 14, 2017 05:52:47.71 [1836:5220:0614/055247.702:ERROR:gcm_channel_status_request.cc(127)] GCM channel request failed.
+6월 14, 2017 06:20:11.77 [1836:5220:0614/062011.779:ERROR:gcm_channel_status_request.cc(127)] GCM channel request failed.
+6월 14, 2017 06:21:07.38 [1836:5220:0614/062107.389:ERROR:gcm_channel_status_request.cc(127)] GCM channel request failed.
+6월 14, 2017 06:22:29.69 [1836:5220:0614/062229.696:ERROR:gcm_channel_status_request.cc(127)] GCM channel request failed.
+6월 14, 2017 06:25:44.46 [1836:5220:0614/062544.468:ERROR:gcm_channel_status_request.cc(127)] GCM channel request failed.
+6월 14, 2017 06:32:29.72 [1836:5220:0614/063229.725:ERROR:gcm_channel_status_request.cc(127)] GCM channel request failed.
+6월 14, 2017 08:06:50.68 [1836:5220:0614/080650.687:ERROR:gcm_channel_status_request.cc(127)] GCM channel request failed.
+
+7월 18, 2017 19:02:49.32 NEW SESSION
+7월 18, 2017 19:02:49.32 [10060:10028:0718/190249.318:ERROR:gcm_channel_status_request.cc(127)] GCM channel request failed.
+7월 18, 2017 19:03:10.14 [10060:10028:0718/190310.142:ERROR:gcm_channel_status_request.cc(127)] GCM channel request failed.
+7월 18, 2017 19:03:54.21 [10060:10028:0718/190354.212:ERROR:gcm_channel_status_request.cc(127)] GCM channel request failed.
+7월 18, 2017 19:05:16.31 [10060:10028:0718/190516.316:ERROR:gcm_channel_status_request.cc(127)] GCM channel request failed.
+7월 18, 2017 19:09:05.09 [10060:10028:0718/190905.093:ERROR:gcm_channel_status_request.cc(127)] GCM channel request failed.
+7월 18, 2017 19:15:44.43 [10060:10028:0718/191544.437:ERROR:gcm_channel_status_request.cc(127)] GCM channel request failed.
+
+8월 10, 2017 13:07:59.85 NEW SESSION
+8월 10, 2017 13:07:59.85 [2592:7524:0810/130759.853:ERROR:media_internals.cc(107)] Cannot get RenderProcessHost
+
+8월 28, 2017 18:45:14.13 NEW SESSION
+8월 28, 2017 18:45:14.13 [3084:916:0828/184514.131:ERROR:media_internals.cc(107)] Cannot get RenderProcessHost
+8월 28, 2017 19:53:16.23 [3084:6684:0828/195316.226:ERROR:service_manager.cc(142)] Connection InterfaceProviderSpec prevented service: content_plugin from binding interface: memory_instrumentation::mojom::Coordinator exposed by: content_browser

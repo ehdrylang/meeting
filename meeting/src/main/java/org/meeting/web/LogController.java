@@ -1,12 +1,11 @@
 package org.meeting.web;
 
-import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.meeting.domain.UserVO;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,11 +18,13 @@ public class LogController {
 		
 	@RequestMapping("/login")
 	public String login(@RequestParam(value="error", required=false) String error, @RequestParam(value="logout",required=false) String logout, Model model){
+		UserVO userVO = new UserVO();
+		model.addAttribute("userVO", userVO);
 		if(error != null){
-			model.addAttribute("error","Invalid username and password");
+			model.addAttribute("error","아이디 또는 패스워드가 올바르지 않습니다!");
 		}
 		if(logout != null){
-			model.addAttribute("logout","You have been logged out successfully");
+			model.addAttribute("logout","로그아웃 되었습니다.");
 		}
 		return "login";
 	}

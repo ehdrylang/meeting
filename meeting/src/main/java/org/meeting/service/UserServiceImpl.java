@@ -31,5 +31,4 @@ public class UserServiceImpl implements UserService {
 	public void remove(String id) throws Exception {
 		dao.delete(id);
 	}
-
 }

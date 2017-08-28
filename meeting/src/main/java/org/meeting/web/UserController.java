@@ -1,14 +1,17 @@
 package org.meeting.web;
 
 import javax.inject.Inject;
+import javax.validation.Valid;
 
 import org.meeting.domain.UserVO;
 import org.meeting.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -19,15 +22,19 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class UserController {
 	@Inject
 	private UserService service;
-	
 
 	@RequestMapping(value="/signup" ,method=RequestMethod.GET)
-	public void registerGET(UserVO vo, Model model)throws Exception{
-		
+	public String registerGET(Model model)throws Exception{
+		UserVO userVO = new UserVO();
+		model.addAttribute("userVO", userVO);
+		return "user/signup";
 	}
 	@RequestMapping(value="/signup", method=RequestMethod.POST)
-	public String registPOST(UserVO vo, RedirectAttributes rttr)throws Exception{
-		service.regist(vo);	
+	public String registPOST(@Valid UserVO userVO, BindingResult result, RedirectAttributes rttr, Model model)throws Exception{
+		if (result.hasErrors()) {
+			return "user/signup";
+		}
+		service.regist(userVO);	
 		rttr.addFlashAttribute("msg","success");
 		return "redirect:/";
 	}
@@ -41,5 +48,22 @@ public class UserController {
 		else{
 			return new ResponseEntity<>("FAIL",HttpStatus.OK);
 		}
+	}
+	@RequestMapping(value="/mypage",method=RequestMethod.GET)
+	public String mypage(Model model)throws Exception{
+		System.out.println("마이페이지 로드");
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String onUser = authentication.getName();
+		model.addAttribute("userinfo", service.read(onUser));
+		return "user/mypage";
+	}
+	@RequestMapping(value="/renewalpassword", method=RequestMethod.GET)
+	public void renewal(Model model)throws Exception{
+		
+	}
+	@RequestMapping(value="/renewalpassword", method=RequestMethod.POST)
+	public String renewalpassword(UserVO vo, RedirectAttributes rttr)throws Exception{
+		service.modify(vo);
+		return "redirect:/login";
 	}
 }
